@@ -14,6 +14,7 @@ describe('Teste para o componente PostComment', () => {
         const textareaElement = screen.getByTestId('txt-comment')
         const buttonElement = screen.getByTestId('btn-submit')
 
+        // comentario 1
         fireEvent.change(textareaElement, {
             target: {
                 value: 'Testando o primeiro comentario'
@@ -21,8 +22,7 @@ describe('Teste para o componente PostComment', () => {
         })
         fireEvent.click(buttonElement)
 
-        expect(screen.getByText('Testando o primeiro comentario')).toBeInTheDocument()
-
+        // comentario 2
         fireEvent.change(textareaElement, {
             target: {
                 value: 'Testando o segundo comentario'
@@ -30,8 +30,10 @@ describe('Teste para o componente PostComment', () => {
         })
         fireEvent.click(buttonElement)
 
-        expect(screen.getByText('Testando o segundo comentario')).toBeInTheDocument()
+        // const comentario = screen.getTestById('comentario')
+        const comentario = screen.getAllByTestId('comentario')
 
-        // fireEvent.click(screen.getByTestId('btn-submit'))
+        // console.log(comentario.length)
+        expect(comentario).toHaveLength(2)
     })
 });
